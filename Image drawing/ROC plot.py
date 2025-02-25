@@ -1,8 +1,3 @@
-"""
-@time : 2024/3/1 9:23
-@auth : HuZhenyuan
-@file : ROC plot.py
-"""
 import pandas as pd
 from sklearn.metrics import roc_curve, auc
 import matplotlib.pyplot as plt
