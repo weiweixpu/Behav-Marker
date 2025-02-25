@@ -1,4 +1,3 @@
-import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
 from models_mae import mae_vit_large_patch16
@@ -11,7 +10,7 @@ from collections import Counter
 import torch
 import numpy as np
 import os
-
+import torch.nn as nn
 
 class ImageFolderWithPaths(torchvision.datasets.ImageFolder):
     def __getitem__(self, index):
@@ -74,11 +73,18 @@ class LinearClassifier(nn.Module):
             nn.Linear(input_dim, hidden_dim),
             nn.ReLU(),
             nn.Dropout(0),
+            nn.Linear(hidden_dim, 256),
+            nn.ReLU(),
+            nn.Dropout(0),
+            nn.Linear(256, hidden_dim),
+            nn.ReLU(),
+            nn.Dropout(0),
             nn.Linear(hidden_dim, output_dim)
         )
 
     def forward(self, x):
         return self.linear(x)
+
 
 
 # Create the entire model, including the base model and classification head
@@ -102,22 +108,17 @@ classifier = LinearClassifier(input_dim=1024, hidden_dim=512, output_dim=2)
 model = CustomModel(base_model, classifier).cuda()
 
 # Load the saved encoder parameter file
-encoder_state_dict = torch.load(r"/data/zhenyuan/pretrain/save_result/encoder_checkpoint_491.pth")
+encoder_state_dict = torch.load(r"/data/zhenyuan/pretrain/save_result/TM_encoder_checkpoint_50.pth")
 
 # Restore the encoder state using the loaded state dictionary
-print("Loading pre-trained checkpoint from:", r"/data/zhenyuan/pretrain/save_result/encoder_checkpoint_491.pth")
+print("Loading pre-trained checkpoint from:", r"/data/zhenyuan/pretrain/save_result/TM_encoder_checkpoint_50.pth")
 state_dict = model.state_dict()
 checkpoint_model = encoder_state_dict
-
-# Remove weights that do not match the current task (such as the weights of the classification head)
-for k in ['head.weight', 'head.bias']:
-    if k in checkpoint_model and checkpoint_model[k].shape != state_dict[k].shape:
-        print(f"Removing key {k} from pretrained checkpoint")
-        del checkpoint_model[k]
 
 # Load pre-trained model weights
 msg = model.load_state_dict(checkpoint_model, strict=False)
 print(msg)
+
 
 model.eval()
 
@@ -160,13 +161,12 @@ def dataload(trainDataPath, testDataPath, validationDataPath):
     print(f"Number of samples in the training set: {len(train_data)}")
     print(f"Number of samples in the test set: {len(test_data)}")
     print(f"Number of samples in the validation set: {len(vali_data)}")
-
     return train_data, test_data, vali_data, train_loader, test_loader, vali_loader
 
 
-train_dataset = '/data/zhenyuan/dataset1/pretraining_dataset3/train'
-val_dataset = '/data/zhenyuan/dataset1/pretraining_dataset3/validation'
-test_dataset = '/data/zhenyuan/dataset1/pretraining_dataset3/test'
+train_dataset = '/data/zhenyuan/dataset1/pretraining_dataset2/train'
+val_dataset = '/data/zhenyuan/dataset1/pretraining_dataset2/validation'
+test_dataset = '/data/zhenyuan/dataset1/pretraining_dataset2/test'
 
 train_data, test_data, vali_data, train_loader, test_loader, val_loader = dataload(train_dataset, test_dataset,
                                                                                    val_dataset)
@@ -174,7 +174,7 @@ train_data, test_data, vali_data, train_loader, test_loader, val_loader = datalo
 # ---------------------
 # Training model
 # ---------------------
-def train(model, train_loader, val_loader, optimizer, scheduler, criterion, patience=200, epochs=200):
+def train(model, train_loader, val_loader, optimizer, scheduler, criterion, patience=1000, epochs=500):
     os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = nn.DataParallel(model)
@@ -226,13 +226,13 @@ def train(model, train_loader, val_loader, optimizer, scheduler, criterion, pati
 
         if val_loss < best_val_loss:
             best_val_loss = val_loss
-            torch.save(model.state_dict(), "/data/zhenyuan/save_model(outputs)/foundation_model_HM.pth")
+            torch.save(model.state_dict(), "/data/zhenyuan/save_model(outputs)/foundation_model_TM.pth")
             epochs_no_improve = 0
         else:
             epochs_no_improve += 1
             if epochs_no_improve >= patience:
                 print(f'Stop training at epoch {epoch} due to early stopping')
-                model.load_state_dict(torch.load("/data/zhenyuan/save_model(outputs)/foundation_model_HM.pth"))
+                model.load_state_dict(torch.load("/data/zhenyuan/save_model(outputs)/foundation_model_TM.pth"))
                 break
 
     log = np.array(log)
@@ -277,21 +277,18 @@ def test(model, loader, criterion):
     test_loss, test_acc, test_roc_auc = evaluate(model, loader, criterion)
     print(f'Test Loss: {test_loss:.4f}, Test Acc: {test_acc:.4f}, Test AUC: {test_roc_auc:.4f}')
 
+
 # ---------------------
 # Set up the training environment
 # ---------------------
-optimizer = optim.Adam(model.classifier.parameters(), lr=0.001)
+optimizer = optim.AdamW(model.classifier.parameters(), lr=0.0001, weight_decay=0)
 
-# Calculate category weights
-train_class_weights = calculate_class_weights(train_data)
-class_weights = torch.tensor([train_class_weights[i] for i in range(len(train_class_weights))],
-                             dtype=torch.float).cuda()
-
-criterion = nn.CrossEntropyLoss(weight=class_weights)
+criterion = nn.CrossEntropyLoss()
+# scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
 
 train(model, train_loader, val_loader, optimizer, scheduler, criterion)
 
-train_csv_path = save_predictions(train_data, model, '/home/zhenyuan/mice/results/foundation_model_HM_train_predictions.csv')
-test_csv_path = save_predictions(test_data, model, '/home/zhenyuan/mice/results/foundation_model_HM_test_predictions.csv')
-vali_csv_path = save_predictions(vali_data, model, '/home/zhenyuan/mice/results/foundation_model_HM_vali_predictions.csv')
+train_csv_path = save_predictions(train_data, model, '/home/zhenyuan/mice/results/foundation_model_TM_train_predictions.csv')
+test_csv_path = save_predictions(test_data, model, '/home/zhenyuan/mice/results/foundation_model_TM_test_predictions.csv')
+vali_csv_path = save_predictions(vali_data, model, '/home/zhenyuan/mice/results/foundation_model_TM_vali_predictions.csv')
