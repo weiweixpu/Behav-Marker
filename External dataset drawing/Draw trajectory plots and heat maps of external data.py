@@ -1,8 +1,3 @@
-"""
-@time : 2024/4/23 9:40
-@auth : HuZhenyuan
-@file : Draw trajectory plots and heat maps of external data.py
-"""
 import os
 import pandas as pd
 import numpy as np
