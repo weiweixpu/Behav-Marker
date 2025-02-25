@@ -1,7 +1,7 @@
 # Behav-Marker: A Novel Artificial Intelligence based Detection Marker for Prodromal Parkinson's Disease Screening
 This is the code implementation of the method used in our paper *"Behav-Marker: A Novel Artificial Intelligence based Detection Marker for Prodromal Parkinson's Disease Screening"*
 # Requirements
-Our models are trained and tested in the environment of Python 3.8, PyTorch 1.9.1, CUDA 11.1. Our interactive software is suitable for win10 and above system versions.
+Our models are trained and tested in the environment of Python 3.8, R 4.2.2, PyTorch 1.9.1, CUDA 11.1. Our interactive software is suitable for win10 and above system versions.
 # Datasets
 The third-party datasets used in our study are provided under the Creative Commons Public License:  
 - [Movebank](https://www.movebank.org/)  
