@@ -225,7 +225,7 @@ for vehicle_id, coords in track_data.items():
             (255, 8, 0), (255, 7, 0), (255, 6, 0), (255, 5, 0), (255, 4, 0), (255, 3, 0),
             (255, 2, 0), (255, 1, 0), (255, 0, 0)
         ]
-        colors = [(r / 255, g / 255, b / 255) for r, g, b in colors]  # 将RGB值从0-255转换到0-1之间
+        colors = [(r / 255, g / 255, b / 255) for r, g, b in colors]
         cmap = LinearSegmentedColormap.from_list('custom_cmap', colors)
 
         # Create and save heatmap
