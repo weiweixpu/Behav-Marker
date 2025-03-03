@@ -13,15 +13,15 @@ import matplotlib
 matplotlib.use('Agg')  # Or 'TkAgg', 'Qt5Agg', etc., based on your environment.
 # File paths and labels (unchanged)
 csv_files = [
-r"E:\Parkinson's Project\data\results\plus 1007 data\second time\densenet121\densenet121 random initialization\random_densenet121_TM_test_predictions.csv",
-r"E:\Parkinson's Project\data\results\plus 1007 data\second time\densenet121\densenet121 pre-training\densenet121_TM_test_predictions.csv",
-r"E:\Parkinson's Project\data\results\plus 1007 data\second time\resnet50\random initialization\random_resnet50_TM_test_predictions.csv",
-r"E:\Parkinson's Project\data\results\plus 1007 data\second time\resnet50\pre-training\resnet50_TM_test_predictions.csv",
-r"E:\Parkinson's project\data\results\plus 1007 data\second time\vit_base\nopretrained\nopretrained_vit_base_TM_test_predictions.csv",
-r"E:\Parkinson's project\data\results\plus 1007 data\second time\vit_base\pre-training fine-tuning\pretrained_vit_base_TM_test_predictions.csv",
-r"E:\Parkinson's project\data\results\plus 1007 data\second time\vit_large\nopretrained\nopretrained_vit_large_TM_test_predictions.csv",
-r"E:\Parkinson's project\data\results\plus 1007 data\second time\vit_large\pre-training\vit_large_TM_test_predictions.csv",
-r"E:\Parkinson's disease topic\data\results\plus 1007 data\second time\basic model\big_model_TM_test_predictions.csv",
+r"E:\Parkinson's Project\data\results\Third time\densenet121\densenet121 random initialization\random_densenet121_TM_test_predictions.csv",
+r"E:\Parkinson's Project\data\results\Third time\densenet121\densenet121 pre-training\densenet121_TM_test_predictions.csv",
+r"E:\Parkinson's Project\data\results\Third time\resnet50\random initialization\random_resnet50_TM_test_predictions.csv",
+r"E:\Parkinson's Project\data\results\Third time\resnet50\pre-training\resnet50_TM_test_predictions.csv",
+r"E:\Parkinson's project\data\results\Third time\vit_base\nopretrained\nopretrained_vit_base_TM_test_predictions.csv",
+r"E:\Parkinson's project\data\results\Third time\vit_base\pre-training fine-tuning\pretrained_vit_base_TM_test_predictions.csv",
+r"E:\Parkinson's project\data\results\Third time\vit_large\nopretrained\nopretrained_vit_large_TM_test_predictions.csv",
+r"E:\Parkinson's project\data\results\Thirdd time\vit_large\pre-training\vit_large_TM_test_predictions.csv",
+r"E:\Parkinson's disease topic\data\results\Third time\basic model\foundation_model_TM_test_predictions.csv",
 ]
 labels = [
     'DenseNet121 (Random Init)',
@@ -70,12 +70,6 @@ for idx, csv_file in enumerate(csv_files):
     sorted_auc_scores.sort()
     lower_bound = sorted_auc_scores[int((1.0 - alpha) / 2 * len(sorted_auc_scores))]
     upper_bound = sorted_auc_scores[int((1.0 + alpha) / 2 * len(sorted_auc_scores))]
-
-    # If AUC is less than 0.5, reverse the curve and adjust the confidence interval
-    if roc_auc < 0.5:
-        fpr, tpr = 1 - fpr, 1 - tpr
-        roc_auc = auc(fpr, tpr)
-        lower_bound, upper_bound = 1 - upper_bound, 1 - lower_bound
 
     # Plot ROC curve with AUC and 95% CI
     plt.plot(fpr, tpr, color=colors[idx], lw=2,
