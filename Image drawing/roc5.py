@@ -65,12 +65,6 @@ for idx, csv_file in enumerate(csv_files):
     lower_bound = sorted_auc_scores[int((1.0 - alpha) / 2 * len(sorted_auc_scores))]
     upper_bound = sorted_auc_scores[int((1.0 + alpha) / 2 * len(sorted_auc_scores))]
 
-    # If AUC is less than 0.5, reverse the curve and adjust the confidence interval
-    if roc_auc < 0.5:
-        fpr, tpr = 1 - fpr, 1 - tpr
-        roc_auc = auc(fpr, tpr)
-        lower_bound, upper_bound = 1 - upper_bound, 1 - lower_bound
-
     # Plot ROC curve with AUC and 95% CI
     plt.plot(fpr, tpr, color=colors[idx], lw=2,
              label=f'{labels[idx]} (AUC = {roc_auc:.3f}, 95% CI = [{lower_bound:.3f}, {upper_bound:.3f}])')
