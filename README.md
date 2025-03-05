@@ -30,4 +30,4 @@ In order to automate the screening and analysis of prodromal behaviors of Parkin
 
 
 ## Models
-We also make public the best model parameters optimized on the internal dataset used in this study (.pth format), which can be obtained through the open platform ().
+We also make public the best model parameters optimized on the internal dataset used in this study (.pth format), which can be obtained through the open platform ([Multimodal-fusion-ViT-base-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-ViT-base)).
