@@ -136,7 +136,6 @@ def train(model, trainData, testData, validationData):
         vali_loss = 0.
         vali_acc = 0.
 
-        # 假设标签为1的样本少，我们给它的权重设为2，而标签为0的样本权重设为1
         weights = [1, 5]
         class_weights = torch.FloatTensor(weights).cuda()
         criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
@@ -149,9 +148,7 @@ def train(model, trainData, testData, validationData):
             outputs = model(inputs)
             loss = criterion(outputs, labels)
 
-            # 增加L2正则化
             params = torch.cat([x.view(-1) for x in model.parameters()])
-            # 计算L2正则化，只考虑权重参数
             l2_reg = 0.0005 * torch.norm(params[:-class_weights.numel()], p=2)
             loss += l2_reg
 
@@ -242,7 +239,7 @@ def train(model, trainData, testData, validationData):
 if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     model = create_model('vit_base_patch16_224', pretrained=True)
-    num_cls = 2  # 只有两个类别
+    num_cls = 2
     model = restruct_model(model, num_cls)
     train_data = '/data/zhenyuan/dataset1/pretraining_dataset2/train'
     test_data = '/data/zhenyuan/dataset1/pretraining_dataset2/test'
