@@ -30,4 +30,27 @@ In order to automate the screening and analysis of prodromal behaviors of Parkin
 
 
 ## Models
-We also make public the best model parameters optimized on the internal dataset used in this study (.pth format), which can be obtained through the open platform ([Multimodal-fusion-ViT-base-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-ViT-base)).
+We also make public the best model parameters optimized on the internal dataset used in this study (.pth format), which can be obtained through the open platform 
+- [Multimodal-fusion-ViT-base-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-ViT-base)
+- [Foundation-model-heatmap](https://huggingface.co/WeiWei-XPU/foundation-model-heatmap)
+- [Multimodal-fusion-densenet121-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-densenet121-model)
+- [Multimodal-fusion-resnet50-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-resnet50-model)
+- [Foundation-model-trajectory-plot](https://huggingface.co/WeiWei-XPU/foundation-model-trajectory-plot)
+- [Multimodal-fusion-foundation-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-foundation-model)
+- [Multimodal-fusion-ViT-large-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-ViT-large-model)
+- [Pretrained-densenet121-heatmap-model](https://huggingface.co/WeiWei-XPU/pretrained-densenet121-heatmap-model)
+- [Pretrained-densenet121-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/pretrained-densenet121-trajectory-plot-model)
+- [Pretrained-resnet50-heatmap-model](https://huggingface.co/WeiWei-XPU/pretrained-resnet50-heatmap-model)
+- [Pretrained-resnet50-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/pretrained-resnet50-trajectory-plot-model)
+- [Pretrained-ViT-base-heatmap-model](https://huggingface.co/WeiWei-XPU/pretrained-ViT-base-heatmap-model)
+- [Pretrained-ViT-base-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/pretrained-ViT-base-trajectory-plot-model)
+- [Pretrained-ViT-large-heatmap-model](https://huggingface.co/WeiWei-XPU/pretrained-ViT-large-heatmap-model)
+- [Pretrained-ViT-large-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/pretrained-ViT-large-trajectory-plot-model)
+- [Random-initial-densenet121-heatmap-model](https://huggingface.co/WeiWei-XPU/random-intial-densenet121-heatmap-model)
+- [Random-initial-densenet121-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/random-intial-densenet121-trajectory-plot-model)
+- [Random-initial-resnet50-heatmap-model](https://huggingface.co/WeiWei-XPU/random-intial-resnet50-heatmap-model)
+- [Random-initial-resnet50-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/random-intial-resnet50-trajectory-plot-model)
+- [Random-initial-ViT-base-heatmap-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-base-heatmap-model)
+- [Random-initial-ViT-base-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-base-trajectory-plot-model)
+- [Random-initial-ViT-large-heatmap-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-large-heatmap-model)
+- [Random-initial-ViT-large-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-large-trajectory-plot-model).
