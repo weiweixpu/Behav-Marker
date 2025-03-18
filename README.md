@@ -10,10 +10,15 @@ The third-party datasets used in our study are provided under the Creative Commo
 - [Taxi GPS Dataset](https://tianchi.aliyun.com/dataset/94216)  
 - [Gowalla Dataset](https://snap.stanford.edu/data/loc-gowalla.html).  
 ### Data Structure
-We make our internal data public. The internal data (trajectory plots and heat maps) used in this study are now open to the research community through an open platform ([PD-Movement-Behavior-Dataset](https://huggingface.co/datasets/WeiWei-XPU/PD-Movement-Behavior-Dataset)), which can be used by academic research peers to verify experimental results, promote method replication, and promote collaborative exploration in the field of early screening for Parkinson's disease.
-Datasets with the following folder structure.
+We make internal data public. The internal data (trajectory maps and heat maps) used in this study and the open field test features (Total Movement Distance, Average Speed, Frequency of Grid Crossings, Center Zones Entries, Time Spent in Center Zones, Distance Moved in Center Zones, Peripheral Zones Entries, Time Spent in Peripheral Zones, Distance Moved in Peripheral Zones) are now open to the research community through an open platform ([PD-Movement-Behavior-Dataset](https://huggingface.co/datasets/WeiWei-XPU/PD-Movement-Behavior-Dataset)), which can be used by academic research peers to verify experimental results, promote method replication, and promote collaborative exploration in the field of early screening for Parkinson's disease.
+Dataset with the following folder structure.
 ```
 Dataset/
+├──Characteristics of open field test/
+│   ├──Control.csv
+│   ├──Third.csv
+│   ├──Sixth.csv
+│   ├──Tenth.csv
 ├── heat map/
 │   ├── Control/
 │   ├── Third/
