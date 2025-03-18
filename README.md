@@ -59,3 +59,43 @@ We also make public the best model parameters optimized on the internal dataset 
 - [Random-initial-ViT-base-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-base-trajectory-plot-model)
 - [Random-initial-ViT-large-heatmap-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-large-heatmap-model)
 - [Random-initial-ViT-large-trajectory-plot-model](https://huggingface.co/WeiWei-XPU/random-intial-ViT-large-trajectory-plot-model).
+## Foundation models fine-tuning
+```bash
+conda create -n mae_finetune python=3.8
+conda activate mae_finetune
+```
+```bash
+pip install torch==2.0.1+cu117 torchvision==0.15.2+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+pip install pandas scikit-learn matplotlib opencv-python
+```
+Directory structure requirements
+```
+/data/zhenyuan/dataset
+├── train/
+│   ├── class0/
+│   └── class1/
+├── validation/
+└── test/
+```
+```bash
+# Pretraining weight path (must be modified)
+pretrain_path = "/data/zhenyuan/pretrain/save_result/encoder_checkpoint.pth"
+```
+```bash
+# Data path (modify according to actual situation)
+train_dataset = '/data/zhenyuan/dataset/train'
+val_dataset = '/data/zhenyuan/dataset/validation'
+```
+```bash
+# Output path (recommended to keep the default)
+save_path = "/data/zhenyuan/save_model(outputs)/foundation_model_HM.pth"
+```
+Fine-tuning execution
+```bash
+# Basic training (single GPU)
+python Heatmap_foundation_model_fine-tuning.py
+```
+```bash
+# Multi-GPU training (2 GPUs)
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 Heatmap_foundation_model_fine-tuning.py
+```
