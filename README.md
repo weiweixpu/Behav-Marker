@@ -96,7 +96,7 @@ val_dataset = '/data/zhenyuan/dataset/validation'
 # Output path (recommended to keep the default)
 save_path = "/data/zhenyuan/save_model(outputs)/foundation_model_HM.pth"
 ```
-# Fine-tuning execution
+## 🛠️Fine-tuning execution
 ```bash
 # Basic training (single GPU)
 python Heatmap_foundation_model_fine-tuning.py
