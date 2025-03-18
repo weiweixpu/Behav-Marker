@@ -84,16 +84,16 @@ pip install pandas scikit-learn matplotlib opencv-python
 └── test/
 ```
 ```bash
-# Pretraining weight path (must be modified)
+# Pretraining weight path
 pretrain_path = "/data/zhenyuan/pretrain/save_result/encoder_checkpoint.pth"
 ```
 ```bash
-# Data path (modify according to actual situation)
+# Data path
 train_dataset = '/data/zhenyuan/dataset/train'
 val_dataset = '/data/zhenyuan/dataset/validation'
 ```
 ```bash
-# Output path (recommended to keep the default)
+# Output path
 save_path = "/data/zhenyuan/save_model(outputs)/foundation_model_HM.pth"
 ```
 ## 🛠️Fine-tuning execution
