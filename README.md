@@ -37,6 +37,7 @@ Dataset/
  ```
 
 ## 🛠️ Open-Source Parkinson's Disease Screening Tool (v1.0.0)
+![替代文本](![7c50125b9207af5c1af70dc5805f283](https://github.com/user-attachments/assets/c59ef188-5fb0-419e-b50f-9d4cb2d6b990))
 In order to automate the screening and analysis of prodromal behaviors of Parkinson's disease 🤖, we have developed an interactive software tool 🖥️ (applicable to Windows 10 and above) that integrates the Parkinson's disease screening model. By simply uploading two types of data 📤, trajectory map and heat map, the risk of Parkinson's disease can be quantitatively assessed. The interactive software is now open to the scientific research community through an open platform 🔓, and can be used by academic and scientific research peers to verify the experimental results.
 
 ## 🤖 Models
