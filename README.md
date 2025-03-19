@@ -95,6 +95,7 @@ pretrain_path = "/data/zhenyuan/pretrain/save_result/encoder_checkpoint.pth"
 # Data path
 train_dataset = '/data/zhenyuan/dataset/train'
 val_dataset = '/data/zhenyuan/dataset/validation'
+test_dataset = '/data/zhenyuan/dataset/test'
 ```
 ```bash
 # Output path
