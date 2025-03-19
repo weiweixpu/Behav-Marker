@@ -81,7 +81,11 @@ pip install pandas scikit-learn matplotlib opencv-python
 │   ├── class0/
 │   └── class1/
 ├── validation/
+│   ├── class0/
+│   └── class1/
 └── test/
+│   ├── class0/
+│   └── class1/
 ```
 ```bash
 # Pretraining weight path
