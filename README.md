@@ -21,7 +21,7 @@ We make internal data public 📢. The internal data (trajectory plots, heatmaps
 Dataset with the following folder structure 📁:
 ```
 Dataset/
-├──Characteristics of open field test/
+├── Behavior characteristics of open field test/
 │   ├──Control.csv
 │   ├──Third.csv
 │   ├──Sixth.csv
