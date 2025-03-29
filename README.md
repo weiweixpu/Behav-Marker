@@ -16,6 +16,8 @@ The third-party datasets used in our study are provided under the Creative Commo
 ### 📂 Data Structure
 We make internal data public 📢. The internal data (trajectory plots, heatmaps and motor behavior characteristics) used in this study and the open field test features (Total Movement Distance, Average Speed, Frequency of Grid Crossings, Center Zones Entries, Time Spent in Center Zones, Distance Moved in Center Zones, Peripheral Zones Entries, Time Spent in Peripheral Zones, Distance Moved in Peripheral Zones) are now open to the research community through an open platform ([PD-Movement-Behavior-Dataset](https://huggingface.co/datasets/WeiWei-XPU/PD-Movement-Behavior-Dataset)) 🤝, which can be used by academic research peers to verify experimental results, promote method replication, and promote collaborative exploration in the field of early screening for Parkinson's disease.
 
+**Please Note:** 🧪 This study uses the Reworded Open Field 63007 experimental device (RWD Life Science Co., Ltd., Shenzhen, China). If you are using a different device for data collection, please make sure to preprocess your data into the same format as used in this project. ⚠️ Otherwise, the provided models may not work directly with your data — you may need to fine-tune or retrain the models to ensure compatibility. 🔧📊
+
 Dataset with the following folder structure 📁:
 ```
 Dataset/
