@@ -41,7 +41,7 @@ Dataset/
 ## 🛠️ Open-Source Parkinson's Disease Screening Tool (v1.0.0)
 In order to automate the screening and analysis of prodromal behaviors of Parkinson's disease 🤖, we have developed an interactive software tool 🖥️ (applicable to Windows 10 and above) that integrates the Parkinson's disease screening model. By simply uploading two types of data 📤, trajectory map and heat map, the risk of Parkinson's disease can be quantitatively assessed. The interactive software is now open to the scientific research community through an open platform 🔓, and can be used by academic and scientific research peers to verify the experimental results.
 
-🔗 ([Behav-Marker_PD_Risk_Screening_System](https://huggingface.co/WeiWei-XPU/Behav-Marker_PD_Risk_Screening_System)).
+🔗 ([Behav-Marker PD Risk Screening System](https://huggingface.co/WeiWei-XPU/Behav-Marker_PD_Risk_Screening_System)).
 
 <p align="center">
   <img src="https://github.com/weiweixpu/Behav-Marker/blob/main/util/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250318202540.jpg" width="200">
