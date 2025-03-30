@@ -41,6 +41,26 @@ Dataset/
 ## 🛠️ Open-Source Parkinson's Disease Screening Tool (v1.0.0)
 In order to automate the screening and analysis of prodromal behaviors of Parkinson's disease 🤖, we have developed an interactive software tool 🖥️ (applicable to Windows 10 and above) that integrates the Parkinson's disease screening model. By simply uploading two types of data 📤, trajectory map and heat map, the risk of Parkinson's disease can be quantitatively assessed. The interactive software is now open to the scientific research community through an open platform 🔓, and can be used by academic and scientific research peers to verify the experimental results.
 
+<p align="center">
+  <img src="https://github.com/weiweixpu/Behav-Marker/blob/main/util/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250318202540.jpg" width="200">
+</p>
+
+<p align="center">
+  <img src="https://github.com/weiweixpu/Behav-Marker/blob/main/util/%E5%9B%BE%E7%89%871.png" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/weiweixpu/Behav-Marker/blob/main/util/%E5%9B%BE%E7%89%872.png" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/weiweixpu/Behav-Marker/blob/main/util/%E5%9B%BE%E7%89%873.png" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/weiweixpu/Behav-Marker/blob/main/util/%E5%9B%BE%E7%89%874.png" width="400">
+</p>
+
 ## 🤖 Models
 We also make public the best model parameters optimized on the internal dataset used in this study (.pth format) 🧠, which can be obtained through the open platform:
 - [🔗 Multimodal-fusion-ViT-base-model](https://huggingface.co/WeiWei-XPU/Multimodal-fusion-ViT-base)
